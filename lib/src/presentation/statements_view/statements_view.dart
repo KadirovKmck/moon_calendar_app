@@ -91,45 +91,43 @@ class _StatementsViewState extends State<StatementsView> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      body: Column(
-        children: [
-          Expanded(
-            child: Container(
-              width: double.infinity,
-              decoration: const BoxDecoration(
-                image: DecorationImage(
-                  image: AssetImage('assets/images/foto.png'),
-                  fit: BoxFit.cover,
-                ),
+    return Column(
+      children: [
+        Expanded(
+          child: Container(
+            width: double.infinity,
+            decoration: const BoxDecoration(
+              image: DecorationImage(
+                image: AssetImage('assets/images/foto.png'),
+                fit: BoxFit.cover,
               ),
-              child: Padding(
-                padding: const EdgeInsets.only(left: 60, top: 100),
-                child: RichText(
-                  text: const TextSpan(
-                    text: '              Аффирмация на сегодня\n',
-                    style: TextStyle(
-                      fontSize: 15,
-                      color: Color(0xFF595D62),
-                    ),
-                    children: <TextSpan>[
-                      TextSpan(
-                        text: 'Я радуюсь каждому\n       новому дню!',
-                        style: TextStyle(
-                          fontSize: 30,
-                          color: Colors.white,
-                          fontWeight: FontWeight.bold,
-                          textBaseline: TextBaseline.alphabetic,
-                        ),
-                      ),
-                    ],
+            ),
+            child: Padding(
+              padding: const EdgeInsets.only(left: 60, top: 100),
+              child: RichText(
+                text: const TextSpan(
+                  text: '              Аффирмация на сегодня\n',
+                  style: TextStyle(
+                    fontSize: 15,
+                    color: Color(0xFF595D62),
                   ),
+                  children: <TextSpan>[
+                    TextSpan(
+                      text: 'Я радуюсь каждому\n       новому дню!',
+                      style: TextStyle(
+                        fontSize: 30,
+                        color: Colors.white,
+                        fontWeight: FontWeight.bold,
+                        textBaseline: TextBaseline.alphabetic,
+                      ),
+                    ),
+                  ],
                 ),
               ),
             ),
           ),
-        ],
-      ),
+        ),
+      ],
     );
   }
 }

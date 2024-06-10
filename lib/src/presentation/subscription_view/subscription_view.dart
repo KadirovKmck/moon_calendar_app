@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:moon_calendar_app/src/presentation/auth/login_view/login_view.dart';
 import 'package:moon_calendar_app/src/presentation/splash_view/splash_view.dart';
 import 'package:moon_calendar_app/src/utils/colors/colors.dart';
 import 'package:moon_calendar_app/src/utils/media_utils/media_utils.dart';
@@ -72,11 +73,13 @@ class _SubscriptionViewState extends State<SubscriptionView> {
               Navigator.pushReplacement(
                 context,
                 MaterialPageRoute(
-                  builder: (context) => const SplashView(),
+                  builder: (context) => const LoginView(),
                 ),
               );
             },
             child: Container(
+              height: 35,
+              width: 35,
               decoration: const BoxDecoration(
                 shape: BoxShape.circle,
                 color: AppColors.orandge,
@@ -144,7 +147,14 @@ class _SubscriptionViewState extends State<SubscriptionView> {
               ),
               const SizedBox(height: 25),
               GestureDetector(
-                onTap: () {},
+                onTap: () {
+                  Navigator.pushReplacement(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) => const LoginView(),
+                    ),
+                  );
+                },
                 child: Container(
                   width: 396,
                   height: 56,
