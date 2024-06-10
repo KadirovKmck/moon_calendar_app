@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:moon_calendar_app/src/utils/navbar_view/navbar_view.dart';
 
 class SingUpView extends StatefulWidget {
   const SingUpView({super.key});
@@ -101,19 +102,29 @@ class _SingUpViewState extends State<SingUpView> {
                   ),
                 ),
                 const SizedBox(height: 20),
-                Container(
-                  decoration: const BoxDecoration(
-                    borderRadius: BorderRadius.all(Radius.circular(10)),
-                    color: Color(0xFFDD6F31),
+                GestureDetector(
+                  onTap: () {
+                    Navigator.pushReplacement(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) => const NavbarView(),
+                      ),
+                    );
+                  },
+                  child: Container(
+                    decoration: const BoxDecoration(
+                      borderRadius: BorderRadius.all(Radius.circular(10)),
+                      color: Color(0xFFDD6F31),
+                    ),
+                    height: 50,
+                    width: double.infinity,
+                    child: const Center(
+                        child: Text(
+                      'Войти',
+                      style: TextStyle(
+                          color: Colors.white, fontWeight: FontWeight.w600),
+                    )),
                   ),
-                  height: 50,
-                  width: double.infinity,
-                  child: const Center(
-                      child: Text(
-                    'Войти',
-                    style: TextStyle(
-                        color: Colors.white, fontWeight: FontWeight.w600),
-                  )),
                 ),
                 const SizedBox(height: 15),
                 const Row(
