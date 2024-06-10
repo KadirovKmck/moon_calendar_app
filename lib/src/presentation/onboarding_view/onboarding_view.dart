@@ -317,7 +317,6 @@ import 'dart:developer';
 
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
-import 'package:moon_calendar_app/src/presentation/splash_view/splash_view.dart';
 import 'package:moon_calendar_app/src/presentation/subscription_view/subscription_view.dart';
 import 'package:moon_calendar_app/src/utils/media_utils/media_utils.dart';
 import 'package:percent_indicator/circular_percent_indicator.dart';
@@ -455,7 +454,6 @@ class _OnboardingViewState extends State<OnboardingView> {
                         center: GestureDetector(
                           onTap: () {
                             final nextPage = _controller.page!.toInt() + 1;
-
                             if (nextPage < titleList.length) {
                               _controller.animateToPage(
                                 nextPage,
