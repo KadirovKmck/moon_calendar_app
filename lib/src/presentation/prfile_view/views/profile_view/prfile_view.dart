@@ -106,8 +106,8 @@ class _ProfileViewState extends State<ProfileView> {
   Widget _buildOption({required IconData icon, required String label}) {
     return GestureDetector(
       onTap: () {
-        Navigator.push(context,
-            MaterialPageRoute(builder: (context) => const LocationView()));
+        // Navigator.push(context,
+        //     MaterialPageRoute(builder: (context) => const LocationView()));
       },
       child: Container(
         height: 100,
