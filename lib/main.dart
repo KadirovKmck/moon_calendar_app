@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:moon_calendar_app/src/presentation/splash_view/splash_view.dart';
+import 'package:moon_calendar_app/src/presentation/prfile_view/prfile_view.dart';
 
 void main() {
   runApp(const App());
@@ -11,7 +11,7 @@ class App extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return const MaterialApp(
-      home: SplashView(),
+      home: ProfileView(),
       debugShowCheckedModeBanner: false,
     );
   }
