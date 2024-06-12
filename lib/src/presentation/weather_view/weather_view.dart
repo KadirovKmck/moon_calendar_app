@@ -144,7 +144,7 @@ class _WeatherViewState extends State<WeatherView>
                   scrollDirection: Axis.horizontal,
                   itemCount: 1,
                   itemBuilder: (context, index) {
-                    return  Container(
+                    return const SizedBox(
                       height: 50,
                       width: 360,
                     );
@@ -152,29 +152,6 @@ class _WeatherViewState extends State<WeatherView>
                 ),
               ),
             ),
-            // TabBar(
-            //   controller: _tabController,
-            //   labelColor: const Color(0xFFDD6F31),
-            //   unselectedLabelColor: Colors.grey,
-            //   indicatorColor: const Color(0xFFDD6F31),
-            //   tabs: const [
-            //     Card(
-            //       child: Text('Activity'),
-            //     ),
-            //     Tab(text: 'Description'),
-            //     Tab(text: 'Periods'),
-            //   ],
-            // ),
-            // Expanded(
-            //   child: TabBarView(
-            //     controller: _tabController,
-            //     children: const [
-            //       DescriptionView(),
-            //       ActivityView(),
-            //       PeriodsView(),
-            //     ],
-            //   ),
-            // ),
           ],
         ),
       ),
