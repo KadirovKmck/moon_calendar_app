@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:moon_calendar_app/src/core/navigation/navbar_view.dart';
 import 'package:moon_calendar_app/src/core/ui/widgets/container_ui.dart';
 import 'package:moon_calendar_app/src/presentation/auth/sing_up_view/sing_up_view.dart';
 import 'package:moon_calendar_app/src/presentation/auth/widget/Regester_google_telega.dart';
@@ -37,32 +38,41 @@ class _LoginViewState extends State<LoginView> {
                   right: width * 0.25,
                   top: height * 0.03,
                 ),
-                child: RichText(
-                  text: TextSpan(
-                    text: 'Aвторизация\n ',
-                    style: TextStyle(
-                      fontWeight: FontWeight.bold,
-                      fontSize: width * 0.06,
-                      color: const Color(0xFF595D62),
-                    ),
-                    children: <TextSpan>[
-                      TextSpan(
-                        text: 'У вас еще нет аккаунта?   ',
-                        style: TextStyle(
+                child: GestureDetector(
+                  onTap: () {
+                    Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) => const SingUpView(),
+                        ));
+                  },
+                  child: RichText(
+                    text: TextSpan(
+                      text: 'Aвторизация\n ',
+                      style: TextStyle(
+                        fontWeight: FontWeight.bold,
+                        fontSize: width * 0.06,
+                        color: const Color(0xFF595D62),
+                      ),
+                      children: <TextSpan>[
+                        TextSpan(
+                          text: 'У вас еще нет аккаунта?   ',
+                          style: TextStyle(
+                              fontSize: width * 0.03,
+                              fontWeight: FontWeight.w400,
+                              textBaseline: TextBaseline.alphabetic),
+                        ),
+                        TextSpan(
+                          text: 'Зарегистрироваться',
+                          style: TextStyle(
+                            decoration: TextDecoration.underline,
+                            color: const Color.fromARGB(255, 248, 118, 43),
                             fontSize: width * 0.03,
                             fontWeight: FontWeight.w400,
-                            textBaseline: TextBaseline.alphabetic),
-                      ),
-                      TextSpan(
-                        text: 'Зарегистрироваться',
-                        style: TextStyle(
-                          decoration: TextDecoration.underline,
-                          color: const Color.fromARGB(255, 248, 118, 43),
-                          fontSize: width * 0.03,
-                          fontWeight: FontWeight.w400,
+                          ),
                         ),
-                      ),
-                    ],
+                      ],
+                    ),
                   ),
                 ),
               ),
@@ -115,10 +125,10 @@ class _LoginViewState extends State<LoginView> {
                     SizedBox(height: height * 0.03),
                     GestureDetector(
                         onTap: () {
-                          Navigator.push(
+                          Navigator.pushReplacement(
                               context,
                               MaterialPageRoute(
-                                  builder: (context) => const SingUpView()));
+                                  builder: (context) => const NavbarView()));
                         },
                         child: const ContainerUi(
                           text: 'Войти',

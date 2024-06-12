@@ -43,7 +43,6 @@ class _ProfileViewState extends State<ProfileView> {
                     style: TextStyle(
                       color: Colors.white,
                       fontSize: 28,
-                      fontFamily: 'DM Sans',
                       fontWeight: FontWeight.w700,
                       letterSpacing: 0.24,
                     ),
@@ -74,7 +73,7 @@ class _ProfileViewState extends State<ProfileView> {
             padding: EdgeInsets.symmetric(
               horizontal: screenWidth * 0.05,
               vertical: screenHeight * 0.02,
-            ), // Responsive padding
+            ),
             child: ListView(
               children: [
                 Row(
@@ -230,7 +229,7 @@ class _ProfileViewState extends State<ProfileView> {
             Text(
               label,
               style: TextStyle(
-                  fontSize: screenHeight * 0.02, color: Colors.grey.shade700),
+                  fontSize: screenHeight * 0.015, color: Colors.grey.shade700),
             ),
           ],
         ),
