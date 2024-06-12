@@ -45,7 +45,7 @@ class _CalendarPageState extends State<CalendarPage> {
             clipper: CustomAppBarClipper(),
             child: Container(
               height: 530,
-              color: const Color(0xFFDD6F31), // Orange color
+              color: const Color(0xFFDD6F31),
               child: Padding(
                 padding: const EdgeInsets.symmetric(horizontal: 16),
                 child: Column(
@@ -54,8 +54,11 @@ class _CalendarPageState extends State<CalendarPage> {
                     Row(
                       children: [
                         IconButton(
-                          icon: const Icon(Icons.arrow_left_outlined,
-                              size: 50, color: Colors.white),
+                          icon: const Icon(
+                            Icons.arrow_left_outlined,
+                            size: 50,
+                            color: Colors.white,
+                          ),
                           onPressed: () {
                             Navigator.pop(context);
                           },
@@ -138,7 +141,6 @@ class _CalendarPageState extends State<CalendarPage> {
     String dayDescription;
     int dayScore;
 
-    // Sample logic to determine description and score based on the date
     if (date.weekday == DateTime.saturday || date.weekday == DateTime.sunday) {
       dayDescription = 'Сегодня - выходной день';
       dayScore = 7;
@@ -219,7 +221,10 @@ class _CalendarPageState extends State<CalendarPage> {
           ),
           onPressed: () {
             setState(() {
-              _focusedDay = DateTime(_focusedDay.year, _focusedDay.month - 1);
+              _focusedDay = DateTime(
+                _focusedDay.year,
+                _focusedDay.month - 1,
+              );
             });
           },
         ),
@@ -235,7 +240,10 @@ class _CalendarPageState extends State<CalendarPage> {
           ),
           onPressed: () {
             setState(() {
-              _focusedDay = DateTime(_focusedDay.year, _focusedDay.month + 1);
+              _focusedDay = DateTime(
+                _focusedDay.year,
+                _focusedDay.month + 1,
+              );
             });
           },
         ),

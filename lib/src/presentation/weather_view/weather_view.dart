@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/widgets.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:moon_calendar_app/src/presentation/weather_view/calendar_page.dart';
 import 'package:moon_calendar_app/src/presentation/weather_view/view/activity_view/activity_view.dart';
@@ -30,8 +31,8 @@ class _WeatherViewState extends State<WeatherView> {
     return Scaffold(
       backgroundColor: Colors.white,
       body: SizedBox(
-        width: MediaQuery.of(context).size.width,
         height: double.infinity,
+        width: double.infinity,
         child: Column(
           children: [
             ClipPath(
@@ -46,10 +47,13 @@ class _WeatherViewState extends State<WeatherView> {
                   children: [
                     Row(
                       children: [
+                        Image.asset(
+                          'assets/images/mom.png',
+                          height: 80,
+                        ),
                         RichText(
                           text: TextSpan(
-                            text:
-                                '            28-й \n                Лунный день\n ',
+                            text: '      28-й \n      Лунный день\n ',
                             style: const TextStyle(
                               fontSize: 24,
                               fontWeight: FontWeight.bold,
@@ -57,7 +61,7 @@ class _WeatherViewState extends State<WeatherView> {
                             ),
                             children: <TextSpan>[
                               TextSpan(
-                                text: '                   Луна в Козероге',
+                                text: '        sЛуна в Козероге',
                                 style: TextStyle(
                                   color: Colors.white.withOpacity(0.9),
                                   fontSize: 16,
@@ -182,18 +186,16 @@ class _WeatherViewState extends State<WeatherView> {
               ),
             ),
             Expanded(
-              child: GestureDetector(
-                onTap: () {
-                  Navigator.push(
-                    context,
-                    MaterialPageRoute(
-                      builder: (context) => const CalendarPage(),
-                    ),
-                  );
-                },
-                child: views[tab],
-              ),
-            ),
+                child: GestureDetector(
+                    onTap: () {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) => const CalendarPage(),
+                        ),
+                      );
+                    },
+                    child: views[tab])),
           ],
         ),
       ),

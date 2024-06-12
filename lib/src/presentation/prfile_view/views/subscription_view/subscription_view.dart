@@ -16,46 +16,51 @@ class _SubscriptionViewState extends State<SubscriptionView> {
   Widget build(BuildContext context) {
     final height = MediaUtils.height(context);
     final width = MediaUtils.width(context);
-    return Scaffold(
-      body: SizedBox(
-        height: height,
-        width: width,
-        child: Column(
-          children: [
-            const CustomClippedAppBar(
-              text: '             Подписка',
-            ),
-            const FunctionSubscription(
-              icons: 'assets/images/moon.png',
-              titles: 'Полный Лунный календарь',
-              subTitles: 'Получайте рекомендации на каждый день',
-            ),
-            const SizedBox(
-              height: 15,
-            ),
-            const FunctionSubscription(
-              icons: 'assets/images/calendar.png',
-              titles: 'Лучшее время для 43 дел',
-              subTitles: 'Свидание, стрижка, шоппинг и тд.',
-            ),
-            const SizedBox(
-              height: 15,
-            ),
-            const FunctionSubscription(
-              icons: 'assets/images/avatarButton.png',
-              titles: 'Индивидуальные расчеты',
-              subTitles: 'Анализ на основе ваших данных рождения',
-            ),
-            const SizedBox(
-              height: 15,
-            ),
-            const FunctionSubscription(
-              icons: 'assets/images/planetSaturn.png',
-              titles: 'Личные астрологические периоды',
-              subTitles: 'Узнайте когда наступит пик продуктивности',
-            ),
-            _buildSubscriptionOptions(),
-          ],
+    return SafeArea(
+      child: Scaffold(
+        body: SizedBox(
+          height: height,
+          width: width,
+          child: Column(
+            children: [
+              const CustomClippedAppBar(
+                text: '             Подписка',
+              ),
+              SizedBox(
+                height: height * 0.0579,
+              ),
+              const FunctionSubscription(
+                icons: 'assets/images/moon.png',
+                titles: 'Полный Лунный календарь',
+                subTitles: 'Получайте рекомендации на каждый день',
+              ),
+              const SizedBox(
+                height: 15,
+              ),
+              const FunctionSubscription(
+                icons: 'assets/images/calendar.png',
+                titles: 'Лучшее время для 43 дел',
+                subTitles: 'Свидание, стрижка, шоппинг и тд.',
+              ),
+              const SizedBox(
+                height: 15,
+              ),
+              const FunctionSubscription(
+                icons: 'assets/images/avatarButton.png',
+                titles: 'Индивидуальные расчеты',
+                subTitles: 'Анализ на основе ваших данных рождения',
+              ),
+              const SizedBox(
+                height: 15,
+              ),
+              const FunctionSubscription(
+                icons: 'assets/images/planetSaturn.png',
+                titles: 'Личные астрологические периоды',
+                subTitles: 'Узнайте когда наступит пик продуктивности',
+              ),
+              _buildSubscriptionOptions(),
+            ],
+          ),
         ),
       ),
     );

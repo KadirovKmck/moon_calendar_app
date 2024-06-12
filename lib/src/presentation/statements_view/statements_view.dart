@@ -17,63 +17,73 @@ class _StatementsViewState extends State<StatementsView> {
           showModalBottomSheet(
             context: context,
             builder: (BuildContext context) {
+              final double screenHeight = MediaQuery.of(context).size.height;
+              final double screenWidth = MediaQuery.of(context).size.width;
               return SizedBox(
-                height: 450,
+                height: screenHeight * 0.55,
                 child: Padding(
-                  padding: const EdgeInsets.all(16.0),
+                  padding: EdgeInsets.all(screenWidth * 0.05),
                   child: Column(
                     children: [
-                      const Image(image: AssetImage('assets/images/woman.png')),
+                      Image(
+                        image: const AssetImage('assets/images/woman.png'),
+                        height: screenHeight * 0.2,
+                      ),
                       RichText(
-                        text: const TextSpan(
-                          text: '              Аффирмации\n',
+                        textAlign: TextAlign.center,
+                        text: TextSpan(
+                          text: 'Аффирмации\n',
                           style: TextStyle(
                             fontWeight: FontWeight.w700,
-                            color: Color(0xFF595D62),
-                            fontSize: 28,
+                            color: const Color(0xFF595D62),
+                            fontSize: screenHeight * 0.035,
                           ),
                           children: <TextSpan>[
                             TextSpan(
-                              text:
-                                  '      Особые фразы, которые исцеляют сознание.\n       Повторяйте их каждый день - и наблюдайте\n                  позитивные перемены в жизни.',
+                              text: 'Особые фразы, которые исцеляют сознание.\n'
+                                  'Повторяйте их каждый день - и наблюдайте\n'
+                                  'позитивные перемены в жизни.',
                               style: TextStyle(
-                                fontSize: 15,
+                                fontSize: screenHeight * 0.02,
                                 fontWeight: FontWeight.w400,
-                                color: Color(0xFFBDBDBD),
+                                color: const Color(0xFFBDBDBD),
                               ),
                             ),
                           ],
                         ),
                       ),
-                      const SizedBox(height: 25),
+                      SizedBox(height: screenHeight * 0.03),
                       Container(
                         decoration: const BoxDecoration(
                           borderRadius: BorderRadius.all(Radius.circular(10)),
                           color: Color(0xFFDD6F31),
                         ),
-                        height: 50,
+                        height: screenHeight * 0.07,
                         width: double.infinity,
                         child: TextButton(
                           onPressed: () {
                             Navigator.pop(context);
                           },
-                          child: const Text(
+                          child: Text(
                             'Хорошо',
-                            style: TextStyle(color: Colors.white),
+                            style: TextStyle(
+                              color: Colors.white,
+                              fontSize: screenHeight * 0.02,
+                            ),
                           ),
                         ),
                       ),
-                      const SizedBox(height: 10),
+                      SizedBox(height: screenHeight * 0.015),
                       TextButton(
                         onPressed: () {
                           Navigator.pop(context);
                         },
-                        child: const Text(
+                        child: Text(
                           'Настроить уведомления',
                           textAlign: TextAlign.center,
                           style: TextStyle(
-                            color: Color(0xFFBDBDBD),
-                            fontSize: 16,
+                            color: const Color(0xFFBDBDBD),
+                            fontSize: screenHeight * 0.02,
                             fontWeight: FontWeight.w500,
                           ),
                         ),
@@ -91,6 +101,11 @@ class _StatementsViewState extends State<StatementsView> {
 
   @override
   Widget build(BuildContext context) {
+    final double screenHeight = MediaQuery.of(context).size.height;
+    final double screenWidth = MediaQuery.of(context).size.width;
+    final bool isPortrait =
+        MediaQuery.of(context).orientation == Orientation.portrait;
+
     return Column(
       children: [
         Expanded(
@@ -103,19 +118,22 @@ class _StatementsViewState extends State<StatementsView> {
               ),
             ),
             child: Padding(
-              padding: const EdgeInsets.only(left: 60, top: 100),
+              padding: EdgeInsets.only(
+                left: isPortrait ? screenWidth * 0.1 : screenWidth * 0.05,
+                top: screenHeight * 0.1,
+              ),
               child: RichText(
-                text: const TextSpan(
-                  text: '              Аффирмация на сегодня\n',
+                text: TextSpan(
+                  text: '                Аффирмация на сегодня\n',
                   style: TextStyle(
-                    fontSize: 15,
-                    color: Color(0xFF595D62),
+                    fontSize: screenHeight * 0.02,
+                    color: const Color(0xFF595D62),
                   ),
                   children: <TextSpan>[
                     TextSpan(
-                      text: 'Я радуюсь каждому\n       новому дню!',
+                      text: ' Я радуюсь каждому\n        новому дню!',
                       style: TextStyle(
-                        fontSize: 30,
+                        fontSize: screenHeight * 0.04,
                         color: Colors.white,
                         fontWeight: FontWeight.bold,
                       ),

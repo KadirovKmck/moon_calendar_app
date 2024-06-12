@@ -2,57 +2,59 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:moon_calendar_app/src/presentation/weather_view/view/activity_view/activity_view.dart';
 
-class CalendarPage extends StatefulWidget {
-  const CalendarPage({super.key});
+class CalendarPage1 extends StatefulWidget {
+  const CalendarPage1({super.key});
 
   @override
-  _CalendarPageState createState() => _CalendarPageState();
+  _CalendarPage1State createState() => _CalendarPage1State();
 }
 
-class _CalendarPageState extends State<CalendarPage> {
+class _CalendarPage1State extends State<CalendarPage1> {
   bool isCalendar = false;
 
   @override
   Widget build(BuildContext context) {
+    final height = MediaQuery.of(context).size.height;
+    final width = MediaQuery.of(context).size.width;
+
     return Scaffold(
+      backgroundColor: Colors.white,
       body: Column(
         children: [
           ClipPath(
             clipper: CustomAppBarClipper(),
             child: Container(
-              height: 155,
+              height: height * 0.23,
+              width: width,
               decoration: const BoxDecoration(
                 color: Color(0xFFDD6F31),
               ),
-              child: Column(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  const SizedBox(height: 10),
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceAround,
-                    children: [
-                      IconButton(
-                        icon: const Icon(Icons.arrow_left_outlined,
-                            size: 50, color: Colors.white),
-                        onPressed: () {
-                          Navigator.pop(context);
-                        },
-                      ),
-                      const Text(
-                        'Выберите активность',
-                        style: TextStyle(
-                          fontSize: 24,
-                          fontWeight: FontWeight.bold,
-                          color: Colors.white,
-                        ),
-                      ),
-                      SvgPicture.asset(
-                        'assets/icons/calendar1.svg',
+              child: Padding(
+                padding: EdgeInsets.only(top: height * 0.05),
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceAround,
+                  children: [
+                    IconButton(
+                      icon: const Icon(Icons.arrow_back,
+                          size: 30, color: Colors.white),
+                      onPressed: () {
+                        Navigator.pop(context);
+                      },
+                    ),
+                    const Text(
+                      'Выберите активность',
+                      style: TextStyle(
+                        fontSize: 24,
+                        fontWeight: FontWeight.bold,
                         color: Colors.white,
                       ),
-                    ],
-                  ),
-                ],
+                    ),
+                    SvgPicture.asset(
+                      'assets/icons/calendar1.svg',
+                      color: Colors.white,
+                    ),
+                  ],
+                ),
               ),
             ),
           ),
@@ -67,9 +69,10 @@ class _CalendarPageState extends State<CalendarPage> {
               });
             },
             child: Padding(
-              padding: const EdgeInsets.all(15.0),
+              padding: const EdgeInsets.symmetric(horizontal: 15, vertical: 10),
               child: Container(
-                padding: const EdgeInsets.all(5),
+                padding:
+                    const EdgeInsets.symmetric(horizontal: 10, vertical: 8),
                 decoration: BoxDecoration(
                   color: const Color(0x0CDD6F31),
                   borderRadius: BorderRadius.circular(10),
@@ -82,12 +85,15 @@ class _CalendarPageState extends State<CalendarPage> {
                       icon: const Icon(Icons.business_center),
                       color: const Color(0xFFDD6F31),
                     ),
-                    const Text(
-                      'Деловая активность',
-                      style: TextStyle(
-                        color: Color(0xFF595D62),
-                        fontSize: 18,
-                        fontWeight: FontWeight.w700,
+                    const Expanded(
+                      child: Text(
+                        'Деловая активность',
+                        textAlign: TextAlign.center,
+                        style: TextStyle(
+                          color: Color(0xFF595D62),
+                          fontSize: 18,
+                          fontWeight: FontWeight.w700,
+                        ),
                       ),
                     ),
                     Icon(
@@ -102,28 +108,23 @@ class _CalendarPageState extends State<CalendarPage> {
           ),
           AnimatedCrossFadeWidget(isCalendar: isCalendar),
           const SizedBox(height: 10),
-          const ColanderPage(
-            text: 'Красота',
-          ),
-          const SizedBox(height: 15),
-          const ColanderPage(
-            text: 'Обучение и творчество',
-          ),
-          const SizedBox(height: 15),
-          const ColanderPage(
-            text: 'Здоровье',
-          ),
-          const SizedBox(height: 15),
-          const ColanderPage(
-            text: 'Дом',
-          ),
-          const SizedBox(height: 15),
-          const ColanderPage(
-            text: 'Отношения',
-          ),
-          const SizedBox(height: 15),
-          const ColanderPage(
-            text: 'Дети',
+          Expanded(
+            child: ListView(
+              padding: const EdgeInsets.symmetric(horizontal: 15),
+              children: const [
+                ColanderPage(text: 'Красота'),
+                SizedBox(height: 15),
+                ColanderPage(text: 'Обучение и творчество'),
+                SizedBox(height: 15),
+                ColanderPage(text: 'Здоровье'),
+                SizedBox(height: 15),
+                ColanderPage(text: 'Дом'),
+                SizedBox(height: 15),
+                ColanderPage(text: 'Отношения'),
+                SizedBox(height: 15),
+                ColanderPage(text: 'Дети'),
+              ],
+            ),
           ),
         ],
       ),
@@ -162,12 +163,21 @@ class ActivityItem extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       height: 45,
-      width: 250,
+      width: double.infinity,
+      padding: const EdgeInsets.symmetric(horizontal: 10),
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(10),
-        border: Border.all(color: const Color.fromARGB(255, 217, 217, 217)),
+        border: Border.all(color: const Color(0xFFD9D9D9)),
       ),
-      child: Center(child: Text(title)),
+      child: Center(
+        child: Text(
+          title,
+          style: const TextStyle(
+            color: Color(0xFF595D62),
+            fontWeight: FontWeight.w500,
+          ),
+        ),
+      ),
     );
   }
 }
@@ -182,7 +192,7 @@ class AnimatedCrossFadeWidget extends StatelessWidget {
     return AnimatedCrossFade(
       firstChild: Container(),
       secondChild: const Padding(
-        padding: EdgeInsets.all(8.0),
+        padding: EdgeInsets.symmetric(horizontal: 15, vertical: 10),
         child: Column(
           children: [
             ActivityItem(title: 'Деловые сделки'),
@@ -205,28 +215,31 @@ class ColanderPage extends StatelessWidget {
     super.key,
     required this.text,
   });
+
   final String text;
+
   @override
   Widget build(BuildContext context) {
     return Container(
-      width: 385,
+      width: double.infinity,
       height: 50,
-      decoration: ShapeDecoration(
+      decoration: BoxDecoration(
         color: const Color(0x0CDD6F31),
-        shape: RoundedRectangleBorder(
-          borderRadius: BorderRadius.circular(10),
-        ),
+        borderRadius: BorderRadius.circular(10),
       ),
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
-          const SizedBox(),
-          Text(
-            text,
-            style: const TextStyle(
-              color: Color(0xFF595D62),
-              fontSize: 18,
-              fontWeight: FontWeight.w700,
+          const SizedBox(width: 15),
+          Expanded(
+            child: Text(
+              text,
+              textAlign: TextAlign.center,
+              style: const TextStyle(
+                color: Color(0xFF595D62),
+                fontSize: 18,
+                fontWeight: FontWeight.w700,
+              ),
             ),
           ),
           const Icon(
@@ -234,6 +247,7 @@ class ColanderPage extends StatelessWidget {
             size: 30,
             color: Color(0xFFDD6F31),
           ),
+          const SizedBox(width: 15),
         ],
       ),
     );

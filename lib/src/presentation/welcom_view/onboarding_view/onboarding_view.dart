@@ -1,16 +1,12 @@
 import 'dart:developer';
-
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:moon_calendar_app/src/presentation/subscription_first_view.dart/subscription_first_view.dart';
-import 'package:moon_calendar_app/src/utils/media_utils/media_utils.dart';
 import 'package:percent_indicator/circular_percent_indicator.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
 
 class OnboardingView extends StatefulWidget {
-  const OnboardingView({
-    super.key,
-  });
+  const OnboardingView({super.key});
 
   @override
   State<OnboardingView> createState() => _OnboardingViewState();
@@ -39,19 +35,25 @@ class _OnboardingViewState extends State<OnboardingView> {
       backgroundColor: Colors.white,
       body: Padding(
         padding: EdgeInsets.symmetric(
-            horizontal: screenWidth * 0.065, vertical: screenHeight * 0.009),
+          horizontal: screenWidth * 0.065,
+          vertical: screenHeight * 0.01,
+        ),
         child: SizedBox(
           height: screenHeight,
           width: screenWidth,
           child: Column(
             children: [
               SizedBox(
-                height: screenHeight * 0.83,
+                height: screenHeight * 0.04,
+              ),
+              SizedBox(
+                height: screenHeight * 0.8,
                 child: PageView.builder(
                   itemCount: titleList.length,
                   controller: _controller,
                   itemBuilder: (context, index) {
                     return Column(
+                      mainAxisAlignment: MainAxisAlignment.start,
                       children: [
                         SizedBox(
                           width: screenWidth * 0.9,
@@ -65,18 +67,21 @@ class _OnboardingViewState extends State<OnboardingView> {
                           ),
                         ),
                         SizedBox(
+                          height: screenHeight * 0.02,
+                        ),
+                        SizedBox(
                           width: screenWidth * 0.9,
                           child: Text(
                             subTitleList[index],
                             style: const TextStyle(
                               color: Color(0xFFBDBDBD),
-                              fontSize: 18,
+                              fontSize: 16,
                               fontWeight: FontWeight.w400,
                             ),
                           ),
                         ),
-                        const SizedBox(
-                          height: 126,
+                        SizedBox(
+                          height: screenHeight * 0.15,
                         ),
                         SvgPicture.asset(
                           onboardingIcons[index],
@@ -89,12 +94,10 @@ class _OnboardingViewState extends State<OnboardingView> {
                 ),
               ),
               Row(
-                crossAxisAlignment: CrossAxisAlignment.start,
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
                   Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
-                    mainAxisAlignment: MainAxisAlignment.start,
                     children: [
                       SmoothPageIndicator(
                         controller: _controller,
@@ -107,7 +110,7 @@ class _OnboardingViewState extends State<OnboardingView> {
                         ),
                       ),
                       const SizedBox(
-                        height: 16,
+                        height: 7,
                       ),
                       TextButton(
                         onPressed: () {
@@ -160,8 +163,8 @@ class _OnboardingViewState extends State<OnboardingView> {
                         addProgress();
                       },
                       child: Container(
-                        width: screenHeight * 0.1,
-                        height: screenHeight * 0.1,
+                        width: screenHeight * 0.07,
+                        height: screenHeight * 0.07,
                         decoration: const BoxDecoration(
                           shape: BoxShape.circle,
                           color: Color(0xFFDD6F31),

@@ -25,7 +25,9 @@ class BirthDateScreen extends StatelessWidget {
                   ),
                   child: ListTile(
                     leading: const Icon(Icons.cake, color: Colors.orange),
-                    title: const Text('Дата рождения'),
+                    title: const Text(
+                      'Дата рождения',
+                    ),
                     trailing: const Text('21.07.1993'),
                     onTap: () {},
                   ),

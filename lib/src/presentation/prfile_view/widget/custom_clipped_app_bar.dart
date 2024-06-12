@@ -1,4 +1,3 @@
-
 import 'package:flutter/material.dart';
 
 class CustomClippedAppBar extends StatelessWidget {
@@ -29,12 +28,14 @@ class CustomClippedAppBar extends StatelessWidget {
                     Navigator.pop(context);
                   },
                 ),
-                Text(
-                  text,
-                  style: const TextStyle(
-                    fontSize: 24,
-                    fontWeight: FontWeight.bold,
-                    color: Colors.white,
+                Center(
+                  child: Text(
+                    text,
+                    style: const TextStyle(
+                      fontSize: 24,
+                      fontWeight: FontWeight.bold,
+                      color: Colors.white,
+                    ),
                   ),
                 ),
               ],

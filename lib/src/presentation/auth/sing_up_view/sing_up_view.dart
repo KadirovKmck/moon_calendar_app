@@ -33,7 +33,7 @@ class _SingUpViewState extends State<SingUpView> {
                       text: ' Зарегистрироваться\n ',
                       style: TextStyle(
                         fontWeight: FontWeight.bold,
-                        fontSize: width * 0.08,
+                        fontSize: width * 0.07,
                         color: const Color(0xFF595D62),
                       ),
                       children: <TextSpan>[
@@ -48,7 +48,6 @@ class _SingUpViewState extends State<SingUpView> {
                         TextSpan(
                           text: 'Войти',
                           style: TextStyle(
-                            decoration: TextDecoration.underline,
                             color: const Color.fromARGB(255, 248, 118, 43),
                             fontSize: width * 0.04,
                             fontWeight: FontWeight.w400,
@@ -130,11 +129,10 @@ class _SingUpViewState extends State<SingUpView> {
                           Navigator.push(
                               context,
                               MaterialPageRoute(
-                                  builder: (context) => const SingUpView()));
+                                  builder: (context) => const NavbarView()));
                         },
-                        child: ContainerUi(
+                        child: const ContainerUi(
                           text: 'Войти',
-                          
                         )),
                     SizedBox(height: height * 0.03),
                     Row(

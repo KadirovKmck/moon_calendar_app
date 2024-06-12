@@ -18,15 +18,23 @@ class ProfileView extends StatefulWidget {
 class _ProfileViewState extends State<ProfileView> {
   @override
   Widget build(BuildContext context) {
+    final double screenHeight = MediaQuery.of(context).size.height;
+    final double screenWidth = MediaQuery.of(context).size.width;
+    final bool isPortrait =
+        MediaQuery.of(context).orientation == Orientation.portrait;
+
     return Column(
       children: [
         ClipPath(
           clipper: CustomAppBarClipper(),
           child: Container(
-            height: 155,
+            height: screenHeight * 0.2,
             color: const Color(0xFFDD6F31),
             child: Padding(
-              padding: const EdgeInsets.all(18.0),
+              padding: EdgeInsets.symmetric(
+                horizontal: screenWidth * 0.05,
+                vertical: screenHeight * 0.03,
+              ),
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
@@ -37,21 +45,18 @@ class _ProfileViewState extends State<ProfileView> {
                       fontSize: 28,
                       fontFamily: 'DM Sans',
                       fontWeight: FontWeight.w700,
-                      height: 0.04,
                       letterSpacing: 0.24,
                     ),
                   ),
                   Container(
-                    width: 36,
-                    height: 36,
-                    decoration: ShapeDecoration(
+                    width: screenWidth * 0.1,
+                    height: screenWidth * 0.1,
+                    decoration: BoxDecoration(
                       color: Colors.white.withOpacity(0.17),
-                      shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(10),
-                      ),
+                      borderRadius: BorderRadius.circular(10),
                     ),
                     child: Padding(
-                      padding: const EdgeInsets.all(4.0),
+                      padding: EdgeInsets.all(screenWidth * 0.01),
                       child: SvgPicture.asset(
                         'assets/icons/solar--exit-bold.svg',
                         color: Colors.white,
@@ -64,144 +69,187 @@ class _ProfileViewState extends State<ProfileView> {
             ),
           ),
         ),
-        Padding(
-          padding: const EdgeInsets.all(16.0),
-          child: Column(
-            children: [
-              Row(
-                mainAxisAlignment: MainAxisAlignment.spaceAround,
-                children: [
-                  GestureDetector(
+        Expanded(
+          child: Padding(
+            padding: EdgeInsets.symmetric(
+              horizontal: screenWidth * 0.05,
+              vertical: screenHeight * 0.02,
+            ), // Responsive padding
+            child: ListView(
+              children: [
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceAround,
+                  children: [
+                    GestureDetector(
                       onTap: () {
                         Navigator.push(
-                            context,
-                            MaterialPageRoute(
-                                builder: (context) => const LocationView()));
-                      },
-                      child: _buildOption(
-                          icon: Icons.location_on, label: 'Ваша локация')),
-                  GestureDetector(
-                      onTap: () {
-                        Navigator.push(
-                            context,
-                            MaterialPageRoute(
-                                builder: (context) => const BirthDateScreen()));
-                      },
-                      child: _buildOption(
-                          icon: Icons.cake, label: 'Дата рождения')),
-                ],
-              ),
-              const SizedBox(height: 20),
-              _buildSection(
-                title: 'Основное',
-                children: [
-                  GestureDetector(
-                    onTap: () {
-                      Navigator.push(
                           context,
                           MaterialPageRoute(
-                              builder: (context) => const NotificationView()));
-                    },
-                    child: _buildListTile(
+                              builder: (context) => const LocationView()),
+                        );
+                      },
+                      child: _buildOption(
+                        icon: Icons.location_on,
+                        label: 'Ваша локация',
+                        context: context,
+                      ),
+                    ),
+                    GestureDetector(
+                      onTap: () {
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                              builder: (context) => const BirthDateScreen()),
+                        );
+                      },
+                      child: _buildOption(
+                        icon: Icons.cake,
+                        label: 'Дата рождения',
+                        context: context,
+                      ),
+                    ),
+                  ],
+                ),
+                const SizedBox(height: 20),
+                _buildSection(
+                  title: 'Основное',
+                  children: [
+                    GestureDetector(
+                      onTap: () {
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                              builder: (context) => const NotificationView()),
+                        );
+                      },
+                      child: _buildListTile(
                         icon: const Icon(Icons.notifications,
                             color: Color(0xFFDD6F31)),
-                        label: 'Уведомления'),
-                  ),
-                  GestureDetector(
-                    onTap: () {
-                      Navigator.push(
+                        label: 'Уведомления',
+                        context: context,
+                      ),
+                    ),
+                    GestureDetector(
+                      onTap: () {
+                        Navigator.push(
                           context,
                           MaterialPageRoute(
-                              builder: (context) => const SubscriptionView()));
-                    },
-                    child: _buildListTile(
+                              builder: (context) => const SubscriptionView()),
+                        );
+                      },
+                      child: _buildListTile(
                         icon: SvgPicture.asset(
                           'assets/icons/solar_crown-bold.svg',
+                          color: const Color(0xFFDD6F31),
                         ),
-                        label: 'Подписка'),
-                  ),
-                ],
-              ),
-              const SizedBox(height: 20),
-              _buildSection(
-                title: 'Полезное',
-                children: [
-                  GestureDetector(
-                    onTap: () {
-                      Navigator.push(
+                        label: 'Подписка',
+                        context: context,
+                      ),
+                    ),
+                  ],
+                ),
+                const SizedBox(height: 20),
+                _buildSection(
+                  title: 'Полезное',
+                  children: [
+                    GestureDetector(
+                      onTap: () {
+                        Navigator.push(
                           context,
                           MaterialPageRoute(
-                              builder: (context) => const ReferenceView()));
-                    },
-                    child: _buildListTile(
+                              builder: (context) => const ReferenceView()),
+                        );
+                      },
+                      child: _buildListTile(
                         icon: const Icon(Icons.info, color: Color(0xFFDD6F31)),
-                        label: 'Справка'),
-                  ),
-                  GestureDetector(
-                    onTap: () {
-                      Navigator.push(
+                        label: 'Справка',
+                        context: context,
+                      ),
+                    ),
+                    GestureDetector(
+                      onTap: () {
+                        Navigator.push(
                           context,
                           MaterialPageRoute(
-                              builder: (context) =>
-                                  const SupportServiceView()));
-                    },
-                    child: _buildListTile(
+                              builder: (context) => const SupportServiceView()),
+                        );
+                      },
+                      child: _buildListTile(
                         icon: const Icon(Icons.help, color: Color(0xFFDD6F31)),
-                        label: 'Служба поддержки'),
-                  ),
-                  GestureDetector(
-                    onTap: () {
-                      Navigator.push(
+                        label: 'Служба поддержки',
+                        context: context,
+                      ),
+                    ),
+                    GestureDetector(
+                      onTap: () {
+                        Navigator.push(
                           context,
                           MaterialPageRoute(
-                              builder: (context) => const AboutUsView()));
-                    },
-                    child: _buildListTile(
+                              builder: (context) => const AboutUsView()),
+                        );
+                      },
+                      child: _buildListTile(
                         icon: const Icon(Icons.description,
                             color: Color(0xFFDD6F31)),
-                        label: 'О нас'),
-                  ),
-                ],
-              ),
-            ],
+                        label: 'О нас',
+                        context: context,
+                      ),
+                    ),
+                  ],
+                ),
+              ],
+            ),
           ),
         ),
       ],
     );
   }
 
-  Widget _buildOption({required IconData icon, required String label}) {
+  Widget _buildOption({
+    required IconData icon,
+    required String label,
+    required BuildContext context,
+  }) {
+    final double screenWidth = MediaQuery.of(context).size.width;
+    final double screenHeight = MediaQuery.of(context).size.height;
     return Container(
-      height: 100,
-      width: 175,
+      height: screenHeight * 0.12,
+      width: screenWidth * 0.4,
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(10),
         color: const Color(0x0CDD6F31),
       ),
       child: Padding(
-        padding: const EdgeInsets.all(15.0),
+        padding: EdgeInsets.all(screenWidth * 0.03),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            Icon(icon, color: const Color(0xFFDD6F31), size: 30),
+            Icon(icon,
+                color: const Color(0xFFDD6F31), size: screenHeight * 0.04),
             const SizedBox(height: 8),
-            Text(label,
-                style: TextStyle(fontSize: 16, color: Colors.grey.shade700)),
+            Text(
+              label,
+              style: TextStyle(
+                  fontSize: screenHeight * 0.02, color: Colors.grey.shade700),
+            ),
           ],
         ),
       ),
     );
   }
 
-  Widget _buildSection(
-      {required String title, required List<Widget> children}) {
+  Widget _buildSection({
+    required String title,
+    required List<Widget> children,
+  }) {
+    final double screenHeight = MediaQuery.of(context).size.height;
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         Text(
           title,
           style: TextStyle(
-            fontSize: 18,
+            fontSize: screenHeight * 0.025,
             fontWeight: FontWeight.bold,
             color: Colors.grey.shade500,
           ),
@@ -212,10 +260,16 @@ class _ProfileViewState extends State<ProfileView> {
     );
   }
 
-  Widget _buildListTile({required Widget icon, required String label}) {
+  Widget _buildListTile({
+    required Widget icon,
+    required String label,
+    required BuildContext context,
+  }) {
+    final double screenWidth = MediaQuery.of(context).size.width;
+    final double screenHeight = MediaQuery.of(context).size.height;
     return Container(
-      height: 60,
-      width: 365,
+      height: screenHeight * 0.08,
+      width: screenWidth * 0.95,
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(10),
         color: const Color(0x0CDD6F31),

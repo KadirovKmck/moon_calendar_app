@@ -106,7 +106,7 @@ class _SubscriptionFirstViewState extends State<SubscriptionFirstView> {
     return ClipPath(
       clipper: TopCurveClipper(),
       child: Container(
-        height: height * 0.5,
+        height: height * 0.45,
         color: const Color(0xFFDD6F31),
         child: Padding(
           padding: EdgeInsets.all(width * 0.04),
@@ -130,7 +130,7 @@ class _SubscriptionFirstViewState extends State<SubscriptionFirstView> {
                   ),
                 ],
               ),
-              SizedBox(height: height * 0.04),
+              SizedBox(height: height * 0.03),
               const Text(
                 'Подписку можно отменить в любой момент',
                 style: TextStyle(
@@ -139,7 +139,7 @@ class _SubscriptionFirstViewState extends State<SubscriptionFirstView> {
                   fontWeight: FontWeight.w400,
                 ),
               ),
-              SizedBox(height: height * 0.04),
+              SizedBox(height: height * 0.01),
               GestureDetector(
                 onTap: () {
                   Navigator.pushReplacement(
@@ -150,8 +150,8 @@ class _SubscriptionFirstViewState extends State<SubscriptionFirstView> {
                   );
                 },
                 child: Container(
-                  width: width * 0.9,
-                  height: height * 0.07,
+                  width: width * 0.7,
+                  height: height * 0.045,
                   decoration: ShapeDecoration(
                     color: const Color(0xFFDD6F31),
                     shape: RoundedRectangleBorder(
@@ -170,7 +170,7 @@ class _SubscriptionFirstViewState extends State<SubscriptionFirstView> {
                   ),
                 ),
               ),
-              SizedBox(height: height * 0.02),
+              SizedBox(height: height * 0.01),
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceAround,
                 children: [
@@ -205,7 +205,7 @@ class _SubscriptionFirstViewState extends State<SubscriptionFirstView> {
             textAlign: TextAlign.center,
             style: const TextStyle(
               color: Colors.white,
-              fontSize: 14,
+              fontSize: 13,
               fontWeight: FontWeight.w700,
             ),
           ),
@@ -229,9 +229,7 @@ class _SubscriptionFirstViewState extends State<SubscriptionFirstView> {
       style: const TextStyle(
         color: Colors.white,
         fontSize: 12,
-        fontFamily: 'DM Sans',
         fontWeight: FontWeight.w400,
-        decoration: TextDecoration.underline,
         decorationColor: Colors.white,
       ),
     );

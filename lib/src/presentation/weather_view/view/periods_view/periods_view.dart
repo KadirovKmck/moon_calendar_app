@@ -14,7 +14,10 @@ class _PeriodsViewState extends State<PeriodsView> {
 
   @override
   Widget build(BuildContext context) {
+    final padding = MediaQuery.of(context).size.width * 0.05;
+
     return SingleChildScrollView(
+      padding: EdgeInsets.all(padding),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
@@ -84,10 +87,10 @@ class _PeriodsViewState extends State<PeriodsView> {
                     '  $title',
                     style: const TextStyle(fontSize: 18),
                   ),
-                  const Icon(
-                    Icons.arrow_right,
+                  Icon(
+                    isExpanded ? Icons.arrow_drop_up : Icons.arrow_right,
                     size: 30,
-                    color: Color(0xFFDD6F31),
+                    color: const Color(0xFFDD6F31),
                   ),
                 ],
               ),
