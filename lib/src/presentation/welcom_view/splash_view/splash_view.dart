@@ -53,15 +53,18 @@ class SplashView extends StatelessWidget {
                 ],
               ),
               GestureDetector(
-                  onTap: () {
-                    Navigator.pushReplacement(
-                      context,
-                      MaterialPageRoute(
-                        builder: (context) => const OnboardingView(),
-                      ),
-                    );
-                  },
-                  child: const ContainerUi(text: 'Начать')),
+                onTap: () {
+                  Navigator.pushReplacement(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) => const OnboardingView(),
+                    ),
+                  );
+                },
+                child: const ContainerUi(
+                  text: 'Начать',
+                ),
+              ),
             ],
           ),
         ),

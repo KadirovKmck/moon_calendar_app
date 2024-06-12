@@ -7,17 +7,19 @@ class RegisterWithGoogle extends StatelessWidget {
     required this.text,
     required this.onPressed,
     required this.svgPicture,
+    required this.width, // Add width parameter
   });
 
   final String text;
   final VoidCallback onPressed;
   final String svgPicture;
+  final double width; // Add width parameter
 
   @override
   Widget build(BuildContext context) {
     return Container(
-      width: 396,
-      height: 56,
+      width: width, // Use width parameter
+      height: 56, // Keep height fixed for now, adjust if needed
       decoration: ShapeDecoration(
         shape: RoundedRectangleBorder(
           side: const BorderSide(color: Color(0xFFE2E2E2)),
@@ -35,15 +37,16 @@ class RegisterWithGoogle extends StatelessWidget {
               children: [
                 SvgPicture.asset(
                   svgPicture,
-                  width: 24,
+                  width: 24, // Keep icon size fixed for now, adjust if needed
                   height: 24,
                 ),
                 const SizedBox(width: 15),
                 Text(
                   text,
-                  style: const TextStyle(
-                    color: Color(0xFFDD6F31),
-                    fontSize: 16,
+                  style: TextStyle(
+                    color: const Color(0xFFDD6F31),
+                    fontSize:
+                        width * 0.04, // Adjust font size based on screen size
                     fontWeight: FontWeight.w700,
                   ),
                 ),

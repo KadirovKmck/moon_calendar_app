@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:moon_calendar_app/src/utils/media_utils/media_utils.dart';
 
 class FunctionSubscription extends StatelessWidget {
   const FunctionSubscription({
@@ -13,6 +14,8 @@ class FunctionSubscription extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final w = MediaUtils.width(context);
+    final h = MediaUtils.height(context);
     return Padding(
       padding: const EdgeInsets.symmetric(horizontal: 16),
       child: Row(

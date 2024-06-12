@@ -38,59 +38,57 @@ class _CalendarPageState extends State<CalendarPage> {
 
   @override
   Widget build(BuildContext context) {
-    return SafeArea(
-      child: Scaffold(
-        body: Column(
-          children: [
-            ClipPath(
-              clipper: CustomAppBarClipper(),
-              child: Container(
-                height: 500,
-                color: const Color(0xFFDD6F31), // Orange color
-                child: Padding(
-                  padding: const EdgeInsets.symmetric(horizontal: 16),
-                  child: Column(
-                    children: [
-                      const SizedBox(height: 10),
-                      Row(
-                        children: [
-                          IconButton(
-                            icon: const Icon(Icons.arrow_left_outlined,
-                                size: 50, color: Colors.white),
-                            onPressed: () {
-                              Navigator.pop(context);
-                            },
+    return Scaffold(
+      body: Column(
+        children: [
+          ClipPath(
+            clipper: CustomAppBarClipper(),
+            child: Container(
+              height: 530,
+              color: const Color(0xFFDD6F31), // Orange color
+              child: Padding(
+                padding: const EdgeInsets.symmetric(horizontal: 16),
+                child: Column(
+                  children: [
+                    const SizedBox(height: 25),
+                    Row(
+                      children: [
+                        IconButton(
+                          icon: const Icon(Icons.arrow_left_outlined,
+                              size: 50, color: Colors.white),
+                          onPressed: () {
+                            Navigator.pop(context);
+                          },
+                        ),
+                        const Text(
+                          '      Деловые сделки',
+                          style: TextStyle(
+                            fontSize: 24,
+                            fontWeight: FontWeight.bold,
+                            color: Colors.white,
                           ),
-                          const Text(
-                            '      Деловые сделки',
-                            style: TextStyle(
-                              fontSize: 24,
-                              fontWeight: FontWeight.bold,
-                              color: Colors.white,
-                            ),
-                          ),
-                        ],
-                      ),
-                      _buildHeader(),
-                      const SizedBox(height: 16.0),
-                      _buildCalendar(),
-                    ],
-                  ),
+                        ),
+                      ],
+                    ),
+                    _buildHeader(),
+                    const SizedBox(height: 16.0),
+                    _buildCalendar(),
+                  ],
                 ),
               ),
             ),
-            Expanded(
-              child: _selectedDay != null
-                  ? _buildDayDetails(_selectedDay!)
-                  : const Center(
-                      child: Text(
-                        'Выберите дату для просмотра деталей.',
-                        style: TextStyle(fontSize: 16, color: Colors.black54),
-                      ),
+          ),
+          Expanded(
+            child: _selectedDay != null
+                ? _buildDayDetails(_selectedDay!)
+                : const Center(
+                    child: Text(
+                      'Выберите дату для просмотра деталей.',
+                      style: TextStyle(fontSize: 16, color: Colors.black54),
                     ),
-            ),
-          ],
-        ),
+                  ),
+          ),
+        ],
       ),
     );
   }

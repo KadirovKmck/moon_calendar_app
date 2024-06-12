@@ -21,35 +21,30 @@ class _SubscriptionFirstViewState extends State<SubscriptionFirstView> {
           height: height,
           width: width,
           child: Column(
+            mainAxisAlignment: MainAxisAlignment.end,
             children: [
               _buildHeader(context),
-              const SizedBox(height: 20),
+              SizedBox(height: height * 0.03),
               const FunctionSubscription(
                   icons: 'assets/images/moon.png',
                   titles: 'Полный Лунный календарь',
                   subTitles: 'Получайте рекомендации на каждый день'),
-              const SizedBox(
-                height: 20,
-              ),
+              SizedBox(height: height * 0.03),
               const FunctionSubscription(
                   icons: 'assets/images/calendar.png',
                   titles: 'Лучшее время для 43 дел',
                   subTitles: 'Свидание, стрижка, шоппинг и тд.'),
-              const SizedBox(
-                height: 20,
-              ),
+              SizedBox(height: height * 0.03),
               const FunctionSubscription(
                   icons: 'assets/images/avatarButton.png',
                   titles: 'Индивидуальные расчеты',
                   subTitles: 'Анализ на основе ваших данных рождения'),
-              const SizedBox(
-                height: 20,
-              ),
+              SizedBox(height: height * 0.03),
               const FunctionSubscription(
                   icons: 'assets/images/planetSaturn.png',
                   titles: 'Личные астрологические периоды',
                   subTitles: 'Узнайте когда наступит пик продуктивности'),
-              _buildSubscriptionOptions()
+              _buildSubscriptionOptions(context)
             ],
           ),
         ),
@@ -58,77 +53,84 @@ class _SubscriptionFirstViewState extends State<SubscriptionFirstView> {
   }
 
   Padding _buildHeader(BuildContext context) {
+    final height = MediaUtils.height(context);
+    final width = MediaUtils.width(context);
+
     return Padding(
-      padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 14),
-      child: Container(
-        child: Row(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            GestureDetector(
-              onTap: () {
-                Navigator.pushReplacement(
-                  context,
-                  MaterialPageRoute(
-                    builder: (context) => const LoginView(),
-                  ),
-                );
-              },
-              child: Container(
-                height: 25,
-                width: 25,
-                decoration: const BoxDecoration(
-                  shape: BoxShape.circle,
-                  color: Color(0xFFDD6F31),
+      padding: EdgeInsets.symmetric(
+          horizontal: width * 0.05, vertical: height * 0.02),
+      child: Row(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          GestureDetector(
+            onTap: () {
+              Navigator.pushReplacement(
+                context,
+                MaterialPageRoute(
+                  builder: (context) => const LoginView(),
                 ),
-                child: const Icon(
-                  Icons.close,
-                  size: 15,
-                  color: Colors.white,
-                ),
+              );
+            },
+            child: Container(
+              height: height * 0.04,
+              width: height * 0.04,
+              decoration: const BoxDecoration(
+                shape: BoxShape.circle,
+                color: Color(0xFFDD6F31),
+              ),
+              child: Icon(
+                Icons.close,
+                size: height * 0.02,
+                color: Colors.white,
               ),
             ),
-            const SizedBox(width: 20),
-            const Text(
-              '           Откройте все \n         функции Zhanat',
-              style: TextStyle(
-                color: Color(0xFF595D62),
-                fontSize: 22,
-                fontWeight: FontWeight.w700,
-              ),
+          ),
+          SizedBox(width: width * 0.05),
+          const Text(
+            '           Откройте все \n         функции Zhanat',
+            style: TextStyle(
+              color: Color(0xFF595D62),
+              fontSize: 22,
+              fontWeight: FontWeight.w700,
             ),
-          ],
-        ),
+          ),
+        ],
       ),
     );
   }
 
-  ClipPath _buildSubscriptionOptions() {
+  ClipPath _buildSubscriptionOptions(BuildContext context) {
+    final height = MediaUtils.height(context);
+    final width = MediaUtils.width(context);
+
     return ClipPath(
       clipper: TopCurveClipper(),
       child: Container(
-        height: 414,
+        height: height * 0.5,
         color: const Color(0xFFDD6F31),
         child: Padding(
-          padding: const EdgeInsets.all(15.0),
+          padding: EdgeInsets.all(width * 0.04),
           child: Column(
             children: [
-              const SizedBox(
-                height: 80,
-              ),
+              SizedBox(height: height * 0.1),
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
                   _buildSubscriptionOption(
                     '299 Р',
                     'в месяц',
+                    width,
+                    height,
                   ),
                   _buildSubscriptionOption(
                     '3 дня бесплатно',
-                    'затем 2390 Р в s',
+                    'затем 2390 Р в год',
+                    width,
+                    height,
                   ),
                 ],
               ),
-              const SizedBox(height: 28),
+              SizedBox(height: height * 0.04),
               const Text(
                 'Подписку можно отменить в любой момент',
                 style: TextStyle(
@@ -137,7 +139,7 @@ class _SubscriptionFirstViewState extends State<SubscriptionFirstView> {
                   fontWeight: FontWeight.w400,
                 ),
               ),
-              const SizedBox(height: 25),
+              SizedBox(height: height * 0.04),
               GestureDetector(
                 onTap: () {
                   Navigator.pushReplacement(
@@ -148,8 +150,8 @@ class _SubscriptionFirstViewState extends State<SubscriptionFirstView> {
                   );
                 },
                 child: Container(
-                  width: 396,
-                  height: 56,
+                  width: width * 0.9,
+                  height: height * 0.07,
                   decoration: ShapeDecoration(
                     color: const Color(0xFFDD6F31),
                     shape: RoundedRectangleBorder(
@@ -168,7 +170,7 @@ class _SubscriptionFirstViewState extends State<SubscriptionFirstView> {
                   ),
                 ),
               ),
-              const SizedBox(height: 15),
+              SizedBox(height: height * 0.02),
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceAround,
                 children: [
@@ -184,10 +186,11 @@ class _SubscriptionFirstViewState extends State<SubscriptionFirstView> {
     );
   }
 
-  Widget _buildSubscriptionOption(String price, String description) {
+  Widget _buildSubscriptionOption(
+      String price, String description, double width, double height) {
     return Container(
-      width: 178,
-      height: 125,
+      width: width * 0.4,
+      height: height * 0.15,
       decoration: ShapeDecoration(
         color: Colors.white.withOpacity(0.44),
         shape: RoundedRectangleBorder(
@@ -239,9 +242,9 @@ class TopCurveClipper extends CustomClipper<Path> {
   @override
   Path getClip(Size size) {
     final path = Path();
-    path.moveTo(0, 100);
+    path.moveTo(0, size.height * 0.2);
     final firstControlPoint = Offset(size.width / 2, 0);
-    final firstEndPoint = Offset(size.width, 100);
+    final firstEndPoint = Offset(size.width, size.height * 0.2);
     path.quadraticBezierTo(firstControlPoint.dx, firstControlPoint.dy,
         firstEndPoint.dx, firstEndPoint.dy);
     path.lineTo(size.width, size.height);

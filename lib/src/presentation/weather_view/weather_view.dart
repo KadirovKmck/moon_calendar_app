@@ -30,8 +30,8 @@ class _WeatherViewState extends State<WeatherView> {
     return Scaffold(
       backgroundColor: Colors.white,
       body: SizedBox(
+        width: MediaQuery.of(context).size.width,
         height: double.infinity,
-        width: double.infinity,
         child: Column(
           children: [
             ClipPath(
@@ -49,7 +49,7 @@ class _WeatherViewState extends State<WeatherView> {
                         RichText(
                           text: TextSpan(
                             text:
-                                '              28-й \n                Лунный день\n ',
+                                '            28-й \n                Лунный день\n ',
                             style: const TextStyle(
                               fontSize: 24,
                               fontWeight: FontWeight.bold,
@@ -57,7 +57,7 @@ class _WeatherViewState extends State<WeatherView> {
                             ),
                             children: <TextSpan>[
                               TextSpan(
-                                text: '                     Луна в Козероге',
+                                text: '                   Луна в Козероге',
                                 style: TextStyle(
                                   color: Colors.white.withOpacity(0.9),
                                   fontSize: 16,
@@ -74,7 +74,7 @@ class _WeatherViewState extends State<WeatherView> {
                               Navigator.push(
                                 context,
                                 MaterialPageRoute(
-                                  builder: (context) => CalendarPage(),
+                                  builder: (context) => const CalendarPage(),
                                 ),
                               );
                             },
@@ -182,16 +182,18 @@ class _WeatherViewState extends State<WeatherView> {
               ),
             ),
             Expanded(
-                child: GestureDetector(
-                    onTap: () {
-                      Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                          builder: (context) => CalendarPage(),
-                        ),
-                      );
-                    },
-                    child: views[tab])),
+              child: GestureDetector(
+                onTap: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) => const CalendarPage(),
+                    ),
+                  );
+                },
+                child: views[tab],
+              ),
+            ),
           ],
         ),
       ),

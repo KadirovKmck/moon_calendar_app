@@ -11,133 +11,153 @@ class LoginView extends StatefulWidget {
 }
 
 class _LoginViewState extends State<LoginView> {
+  bool obscureText = true;
+
   @override
   Widget build(BuildContext context) {
-    bool obscureText = true;
+    final height = MediaQuery.of(context).size.height;
+    final width = MediaQuery.of(context).size.width;
+
     return SafeArea(
       child: Scaffold(
         backgroundColor: Colors.white,
-        body: Column(
-          children: [
-            const SizedBox(
-              height: 10,
-            ),
-            const Image(
-              image: AssetImage('assets/images/fire.png'),
-            ),
-            Padding(
-              padding: const EdgeInsets.only(right: 56, top: 15),
-              child: RichText(
-                text: const TextSpan(
-                  text: ' Авторизация\n ',
-                  style: TextStyle(
-                    fontWeight: FontWeight.bold,
-                    fontSize: 30,
-                    color: Color(0xFF595D62),
-                  ),
-                  children: <TextSpan>[
-                    TextSpan(
-                      text: 'У вас еще нет аккаунта?   ',
-                      style: TextStyle(
-                          fontSize: 15,
-                          fontWeight: FontWeight.w400,
-                          textBaseline: TextBaseline.alphabetic),
-                    ),
-                    TextSpan(
-                      text: 'Зарегистрироваться',
-                      style: TextStyle(
-                        decoration: TextDecoration.underline,
-                        color: Color.fromARGB(255, 248, 118, 43),
-                        fontSize: 15,
-                        fontWeight: FontWeight.w400,
-                      ),
-                    ),
-                  ],
+        body: LayoutBuilder(
+          builder: (context, constraints) {
+            return Column(
+              children: [
+                SizedBox(
+                  height: height * 0.02,
                 ),
-              ),
-            ),
-            Padding(
-              padding: const EdgeInsets.all(17.0),
-              child: Column(
-                children: [
-                  const TextField(
-                    decoration: InputDecoration(
-                      hintText: 'Имя',
-                      border: OutlineInputBorder(
-                          borderRadius: BorderRadius.only(
-                              topLeft: Radius.circular(10),
-                              topRight: Radius.circular(10))),
-                    ),
+                Image(
+                  image: const AssetImage('assets/images/fire.png'),
+                  width: width * 0.3,
+                  height: width * 0.3,
+                ),
+                Padding(
+                  padding: EdgeInsets.only(
+                    right: width * 0.15,
+                    top: height * 0.03,
                   ),
-                  TextField(
-                    obscureText: obscureText,
-                    decoration: InputDecoration(
-                      hintText: 'Пароль',
-                      border: const OutlineInputBorder(
-                          borderRadius: BorderRadius.only(
-                              bottomLeft: Radius.circular(10),
-                              bottomRight: Radius.circular(10))),
-                      suffixIcon: TextButton(
-                        onPressed: () {
-                          setState(() {
-                            obscureText = !obscureText;
-                          });
-                        },
-                        child: const Text('Показат',
-                            style: TextStyle(color: Colors.black)),
+                  child: RichText(
+                    text: TextSpan(
+                      text: 'Aвторизация\n ',
+                      style: TextStyle(
+                        fontWeight: FontWeight.bold,
+                        fontSize: width * 0.06,
+                        color: const Color(0xFF595D62),
                       ),
-                    ),
-                  ),
-                  const SizedBox(height: 10),
-                  Align(
-                    alignment: Alignment.centerLeft,
-                    child: TextButton(
-                      onPressed: () {},
-                      child: const Text(
-                        'Забыли пароль?',
-                        style: TextStyle(
+                      children: <TextSpan>[
+                        TextSpan(
+                          text: 'У вас еще нет аккаунта?   ',
+                          style: TextStyle(
+                              fontSize: width * 0.03,
+                              fontWeight: FontWeight.w400,
+                              textBaseline: TextBaseline.alphabetic),
+                        ),
+                        TextSpan(
+                          text: 'Зарегистрироваться',
+                          style: TextStyle(
                             decoration: TextDecoration.underline,
-                            fontSize: 15,
-                            color: Color.fromARGB(255, 131, 131, 131)),
-                      ),
+                            color: const Color.fromARGB(255, 248, 118, 43),
+                            fontSize: width * 0.03,
+                            fontWeight: FontWeight.w400,
+                          ),
+                        ),
+                      ],
                     ),
                   ),
-                  const SizedBox(height: 15),
-                  GestureDetector(
-                      onTap: () {
-                        Navigator.push(
-                            context,
-                            MaterialPageRoute(
-                                builder: (context) => const SingUpView()));
-                      },
-                      child: const ContainerUi(text: 'Войти')),
-                  const SizedBox(height: 15),
-                  const Row(
+                ),
+                Padding(
+                  padding: EdgeInsets.all(width * 0.04),
+                  child: Column(
                     children: [
-                      Expanded(child: Divider()),
-                      Padding(
-                        padding: EdgeInsets.symmetric(horizontal: 8.0),
-                        child: Text('Или'),
+                      TextField(
+                        decoration: InputDecoration(
+                          hintText: 'Имя',
+                          border: OutlineInputBorder(
+                              borderRadius: BorderRadius.only(
+                                  topLeft: Radius.circular(width * 0.02),
+                                  topRight: Radius.circular(width * 0.02))),
+                        ),
                       ),
-                      Expanded(child: Divider()),
+                      TextField(
+                        obscureText: obscureText,
+                        decoration: InputDecoration(
+                          hintText: 'Пароль',
+                          border: OutlineInputBorder(
+                              borderRadius: BorderRadius.only(
+                                  bottomLeft: Radius.circular(width * 0.02),
+                                  bottomRight: Radius.circular(width * 0.02))),
+                          suffixIcon: TextButton(
+                            onPressed: () {
+                              setState(() {
+                                obscureText = !obscureText;
+                              });
+                            },
+                            child: const Text('Показат',
+                                style: TextStyle(color: Colors.black)),
+                          ),
+                        ),
+                      ),
+                      SizedBox(height: height * 0.02),
+                      Align(
+                        alignment: Alignment.centerLeft,
+                        child: TextButton(
+                          onPressed: () {},
+                          child: Text(
+                            'Забыли пароль?',
+                            style: TextStyle(
+                                decoration: TextDecoration.underline,
+                                fontSize: width * 0.03,
+                                color:
+                                    const Color.fromARGB(255, 131, 131, 131)),
+                          ),
+                        ),
+                      ),
+                      SizedBox(height: height * 0.03),
+                      GestureDetector(
+                          onTap: () {
+                            Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                    builder: (context) => const SingUpView()));
+                          },
+                          child: ContainerUi(
+                            text: 'Войти',
+            
+                          )),
+                      SizedBox(height: height * 0.03),
+                      Row(
+                        children: [
+                          const Expanded(child: Divider()),
+                          Padding(
+                            padding:
+                                EdgeInsets.symmetric(horizontal: width * 0.02),
+                            child: const Text('Или'),
+                          ),
+                          const Expanded(child: Divider()),
+                        ],
+                      ),
+                      SizedBox(height: height * 0.03),
+                      RegisterWithGoogle(
+                        svgPicture: 'assets/icons/google.svg',
+                        text: '        Продолжить с Google',
+                        onPressed: () {},
+                        width: width * 0.8,
+                      ),
+                      SizedBox(height: height * 0.02),
+                      RegisterWithGoogle(
+                        svgPicture: 'assets/icons/telega.svg',
+                        text: '        Продолжить с Telegram',
+                        onPressed: () {},
+                        width: width * 0.8,
+                      ),
                     ],
                   ),
-                  const SizedBox(height: 15),
-                  RegisterWithGoogle(
-                    svgPicture: 'assets/icons/google.svg',
-                    text: '            Продолжить с Google',
-                    onPressed: () {},
-                  ),
-                  const SizedBox(height: 10),
-                  RegisterWithGoogle(
-                    svgPicture: 'assets/icons/telega.svg',
-                    text: '            Продолжить с Telegram',
-                    onPressed: () {},
-                  ),
-                ],
-              ),
-            ),
-          ],
+                ),
+              ],
+            );
+          },
         ),
       ),
     );
