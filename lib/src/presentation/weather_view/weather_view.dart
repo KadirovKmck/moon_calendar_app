@@ -12,15 +12,18 @@ class WeatherView extends StatefulWidget {
   _WeatherViewState createState() => _WeatherViewState();
 }
 
-class _WeatherViewState extends State<WeatherView>
-    with SingleTickerProviderStateMixin {
-  late TabController _tabController;
-
-  @override
-  void initState() {
-    super.initState();
-    _tabController = TabController(length: 3, vsync: this);
-  }
+class _WeatherViewState extends State<WeatherView> {
+  final List<String> title = [
+    'Описание',
+    'Активность',
+    'Периоды',
+  ];
+  final List<Widget> views = [
+    const DescriptionView(),
+    const ActivityView(),
+    const PeriodsView(),
+  ];
+  int tab = 0;
 
   @override
   Widget build(BuildContext context) {
@@ -71,7 +74,7 @@ class _WeatherViewState extends State<WeatherView>
                               Navigator.push(
                                 context,
                                 MaterialPageRoute(
-                                  builder: (context) => const CalendarPage(),
+                                  builder: (context) => CalendarPage(),
                                 ),
                               );
                             },
@@ -131,50 +134,64 @@ class _WeatherViewState extends State<WeatherView>
             Padding(
               padding: const EdgeInsets.symmetric(horizontal: 16),
               child: Container(
-                height: 43,
+                height: 45,
                 width: double.infinity,
                 decoration: BoxDecoration(
                   color: Colors.white,
                   borderRadius: BorderRadius.circular(15),
                   border: Border.all(
-                    color: Colors.black,
+                    color: Colors.grey,
                   ),
                 ),
                 child: ListView.builder(
                   scrollDirection: Axis.horizontal,
-                  itemCount: 1,
+                  itemCount: 3,
                   itemBuilder: (context, index) {
-                    return  Container(
-                      height: 50,
-                      width: 360,
+                    return GestureDetector(
+                      onTap: () {
+                        setState(() {
+                          tab = index;
+                        });
+                      },
+                      child: AnimatedContainer(
+                        duration: const Duration(milliseconds: 500),
+                        margin: const EdgeInsets.all(0.9),
+                        height: 46,
+                        width: 125,
+                        decoration: BoxDecoration(
+                          color: tab == index
+                              ? const Color(0xFFDD6F31)
+                              : Colors.transparent,
+                          borderRadius: BorderRadius.circular(15),
+                        ),
+                        child: Center(
+                          child: Text(
+                            title[index],
+                            textAlign: TextAlign.center,
+                            style: TextStyle(
+                              color: tab == index ? Colors.white : Colors.grey,
+                              fontSize: 16,
+                              fontWeight: FontWeight.w500,
+                            ),
+                          ),
+                        ),
+                      ),
                     );
                   },
                 ),
               ),
             ),
-            // TabBar(
-            //   controller: _tabController,
-            //   labelColor: const Color(0xFFDD6F31),
-            //   unselectedLabelColor: Colors.grey,
-            //   indicatorColor: const Color(0xFFDD6F31),
-            //   tabs: const [
-            //     Card(
-            //       child: Text('Activity'),
-            //     ),
-            //     Tab(text: 'Description'),
-            //     Tab(text: 'Periods'),
-            //   ],
-            // ),
-            // Expanded(
-            //   child: TabBarView(
-            //     controller: _tabController,
-            //     children: const [
-            //       DescriptionView(),
-            //       ActivityView(),
-            //       PeriodsView(),
-            //     ],
-            //   ),
-            // ),
+            Expanded(
+                child: GestureDetector(
+                    onTap: () {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) => CalendarPage(),
+                        ),
+                      );
+                    },
+                    child: views[tab])),
           ],
         ),
       ),
