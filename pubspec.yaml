@@ -13,6 +13,8 @@ dependencies:
   flutter_svg: ^2.0.10+1
   smooth_page_indicator: ^1.1.0
   percent_indicator: ^4.2.3
+  url_launcher: ^6.0.20
+  table_calendar: ^3.0.0
 
 dev_dependencies:
   flutter_test:

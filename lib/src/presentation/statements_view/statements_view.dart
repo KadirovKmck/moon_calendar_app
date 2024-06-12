@@ -98,7 +98,7 @@ class _StatementsViewState extends State<StatementsView> {
             width: double.infinity,
             decoration: const BoxDecoration(
               image: DecorationImage(
-                image: AssetImage('assets/images/foto.png'),
+                image: AssetImage('assets/images/nature.png'),
                 fit: BoxFit.cover,
               ),
             ),
@@ -118,7 +118,6 @@ class _StatementsViewState extends State<StatementsView> {
                         fontSize: 30,
                         color: Colors.white,
                         fontWeight: FontWeight.bold,
-                        textBaseline: TextBaseline.alphabetic,
                       ),
                     ),
                   ],

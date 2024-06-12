@@ -1,6 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:moon_calendar_app/src/presentation/prfile_view/views/about_us_view/about_us_view.dart';
+import 'package:moon_calendar_app/src/presentation/prfile_view/views/date_of_birth./date_of_birth_view.dart';
 import 'package:moon_calendar_app/src/presentation/prfile_view/views/location_view/location_view.dart';
+import 'package:moon_calendar_app/src/presentation/prfile_view/views/notification_view/notification_view.dart';
+import 'package:moon_calendar_app/src/presentation/prfile_view/views/reference_view/reference_view.dart';
+import 'package:moon_calendar_app/src/presentation/prfile_view/views/subscription_view/subscription_view.dart';
+import 'package:moon_calendar_app/src/presentation/prfile_view/views/support_service_view/support_service_view.dart';
 
 class ProfileView extends StatefulWidget {
   const ProfileView({super.key});
@@ -20,31 +26,39 @@ class _ProfileViewState extends State<ProfileView> {
             height: 155,
             color: const Color(0xFFDD6F31),
             child: Padding(
-              padding: const EdgeInsets.all(20.0),
+              padding: const EdgeInsets.all(18.0),
               child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
-                  const SizedBox(height: 30),
                   const Text(
                     'Настройки',
                     style: TextStyle(
-                      fontSize: 24,
-                      fontWeight: FontWeight.bold,
                       color: Colors.white,
+                      fontSize: 28,
+                      fontFamily: 'DM Sans',
+                      fontWeight: FontWeight.w700,
+                      height: 0.04,
+                      letterSpacing: 0.24,
                     ),
                   ),
-                  const Spacer(),
                   Container(
-                    height: 40,
-                    width: 40,
-                    decoration: BoxDecoration(
-                      borderRadius: BorderRadius.circular(10),
-                      color: Colors.white.withOpacity(0.3),
+                    width: 36,
+                    height: 36,
+                    decoration: ShapeDecoration(
+                      color: Colors.white.withOpacity(0.17),
+                      shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(10),
+                      ),
                     ),
-                    child: SvgPicture.asset(
-                      'assets/icons/solar_exit-bold.svg',
-                      fit: BoxFit.none,
+                    child: Padding(
+                      padding: const EdgeInsets.all(4.0),
+                      child: SvgPicture.asset(
+                        'assets/icons/solar--exit-bold.svg',
+                        color: Colors.white,
+                        fit: BoxFit.contain,
+                      ),
                     ),
-                  )
+                  ),
                 ],
               ),
             ),
@@ -57,39 +71,96 @@ class _ProfileViewState extends State<ProfileView> {
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceAround,
                 children: [
-                  _buildOption(icon: Icons.location_on, label: 'Ваша локация'),
-                  _buildOption(icon: Icons.cake, label: 'Дата рождения'),
+                  GestureDetector(
+                      onTap: () {
+                        Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                                builder: (context) => const LocationView()));
+                      },
+                      child: _buildOption(
+                          icon: Icons.location_on, label: 'Ваша локация')),
+                  GestureDetector(
+                      onTap: () {
+                        Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                                builder: (context) => const BirthDateScreen()));
+                      },
+                      child: _buildOption(
+                          icon: Icons.cake, label: 'Дата рождения')),
                 ],
               ),
               const SizedBox(height: 20),
               _buildSection(
                 title: 'Основное',
                 children: [
-                  _buildListTile(
-                      icon: const Icon(Icons.notifications,
-                          color: Color(0xFFDD6F31)),
-                      label: 'Уведомления'),
-                  _buildListTile(
-                      icon: SvgPicture.asset(
-                        'assets/icons/solar_crown-bold.svg',
-                      ),
-                      label: 'Подписка'),
+                  GestureDetector(
+                    onTap: () {
+                      Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                              builder: (context) => const NotificationView()));
+                    },
+                    child: _buildListTile(
+                        icon: const Icon(Icons.notifications,
+                            color: Color(0xFFDD6F31)),
+                        label: 'Уведомления'),
+                  ),
+                  GestureDetector(
+                    onTap: () {
+                      Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                              builder: (context) => const SubscriptionView()));
+                    },
+                    child: _buildListTile(
+                        icon: SvgPicture.asset(
+                          'assets/icons/solar_crown-bold.svg',
+                        ),
+                        label: 'Подписка'),
+                  ),
                 ],
               ),
               const SizedBox(height: 20),
               _buildSection(
                 title: 'Полезное',
                 children: [
-                  _buildListTile(
-                      icon: const Icon(Icons.info, color: Color(0xFFDD6F31)),
-                      label: 'Справка'),
-                  _buildListTile(
-                      icon: const Icon(Icons.help, color: Color(0xFFDD6F31)),
-                      label: 'Служба поддержки'),
-                  _buildListTile(
-                      icon: const Icon(Icons.description,
-                          color: Color(0xFFDD6F31)),
-                      label: 'О нас'),
+                  GestureDetector(
+                    onTap: () {
+                      Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                              builder: (context) => const ReferenceView()));
+                    },
+                    child: _buildListTile(
+                        icon: const Icon(Icons.info, color: Color(0xFFDD6F31)),
+                        label: 'Справка'),
+                  ),
+                  GestureDetector(
+                    onTap: () {
+                      Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                              builder: (context) =>
+                                  const SupportServiceView()));
+                    },
+                    child: _buildListTile(
+                        icon: const Icon(Icons.help, color: Color(0xFFDD6F31)),
+                        label: 'Служба поддержки'),
+                  ),
+                  GestureDetector(
+                    onTap: () {
+                      Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                              builder: (context) => const AboutUsView()));
+                    },
+                    child: _buildListTile(
+                        icon: const Icon(Icons.description,
+                            color: Color(0xFFDD6F31)),
+                        label: 'О нас'),
+                  ),
                 ],
               ),
             ],
@@ -100,29 +171,23 @@ class _ProfileViewState extends State<ProfileView> {
   }
 
   Widget _buildOption({required IconData icon, required String label}) {
-    return GestureDetector(
-      onTap: () {
-        Navigator.push(context,
-            MaterialPageRoute(builder: (context) => const LocationView()));
-      },
-      child: Container(
-        height: 100,
-        width: 175,
-        decoration: BoxDecoration(
-          borderRadius: BorderRadius.circular(10),
-          color: const Color(0x0CDD6F31),
-        ),
-        child: Padding(
-          padding: const EdgeInsets.all(15.0),
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              Icon(icon, color: const Color(0xFFDD6F31), size: 30),
-              const SizedBox(height: 8),
-              Text(label,
-                  style: TextStyle(fontSize: 16, color: Colors.grey.shade700)),
-            ],
-          ),
+    return Container(
+      height: 100,
+      width: 175,
+      decoration: BoxDecoration(
+        borderRadius: BorderRadius.circular(10),
+        color: const Color(0x0CDD6F31),
+      ),
+      child: Padding(
+        padding: const EdgeInsets.all(15.0),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Icon(icon, color: const Color(0xFFDD6F31), size: 30),
+            const SizedBox(height: 8),
+            Text(label,
+                style: TextStyle(fontSize: 16, color: Colors.grey.shade700)),
+          ],
         ),
       ),
     );
@@ -163,7 +228,6 @@ class _ProfileViewState extends State<ProfileView> {
           size: 35,
           color: Color(0xFFD9D9D9),
         ),
-        onTap: () {},
       ),
     );
   }

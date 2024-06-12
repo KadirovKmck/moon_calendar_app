@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:moon_calendar_app/src/presentation/onboarding_view/onboarding_view.dart';
+import 'package:moon_calendar_app/src/core/ui/widgets/container_ui.dart';
+import 'package:moon_calendar_app/src/presentation/welcom_view/onboarding_view/onboarding_view.dart';
 
 class SplashView extends StatelessWidget {
   const SplashView({super.key});
@@ -46,7 +47,6 @@ class SplashView extends StatelessWidget {
                     style: TextStyle(
                       color: Color(0xFFBDBDBD),
                       fontSize: 18,
-                      fontFamily: 'DMSans',
                       fontWeight: FontWeight.w400,
                     ),
                   ),
@@ -61,39 +61,7 @@ class SplashView extends StatelessWidget {
                       ),
                     );
                   },
-                  child: Padding(
-                    padding: EdgeInsets.symmetric(horizontal: width * 0.018),
-                    child: Container(
-                      width: double.infinity,
-                      height: 56,
-                      padding: const EdgeInsets.symmetric(
-                          horizontal: 24, vertical: 16),
-                      clipBehavior: Clip.antiAlias,
-                      decoration: ShapeDecoration(
-                        color: const Color(0xFFDD6F31),
-                        shape: RoundedRectangleBorder(
-                            borderRadius: BorderRadius.circular(8)),
-                      ),
-                      child: const Row(
-                        mainAxisSize: MainAxisSize.min,
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        crossAxisAlignment: CrossAxisAlignment.center,
-                        children: [
-                          Text(
-                            'Начать',
-                            textAlign: TextAlign.center,
-                            style: TextStyle(
-                              color: Colors.white,
-                              fontSize: 16,
-                              fontFamily: 'DM Sans',
-                              fontWeight: FontWeight.w700,
-                              height: 0.09,
-                            ),
-                          ),
-                        ],
-                      ),
-                    ),
-                  ))
+                  child: const ContainerUi(text: 'Начать')),
             ],
           ),
         ),

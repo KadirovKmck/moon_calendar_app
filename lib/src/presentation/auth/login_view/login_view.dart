@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:moon_calendar_app/src/core/ui/widgets/container_ui.dart';
 import 'package:moon_calendar_app/src/presentation/auth/sing_up_view/sing_up_view.dart';
+import 'package:moon_calendar_app/src/presentation/auth/widget/Regester_google_telega.dart';
 
 class LoginView extends StatefulWidget {
   const LoginView({super.key});
@@ -17,8 +19,11 @@ class _LoginViewState extends State<LoginView> {
         backgroundColor: Colors.white,
         body: Column(
           children: [
+            const SizedBox(
+              height: 10,
+            ),
             const Image(
-              image: AssetImage('assets/images/q.png'),
+              image: AssetImage('assets/images/fire.png'),
             ),
             Padding(
               padding: const EdgeInsets.only(right: 56, top: 15),
@@ -99,27 +104,13 @@ class _LoginViewState extends State<LoginView> {
                   ),
                   const SizedBox(height: 15),
                   GestureDetector(
-                    onTap: () {
-                      Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                              builder: (context) => const SingUpView()));
-                    },
-                    child: Container(
-                      decoration: const BoxDecoration(
-                        borderRadius: BorderRadius.all(Radius.circular(10)),
-                        color: Color(0xFFDD6F31),
-                      ),
-                      height: 50,
-                      width: double.infinity,
-                      child: const Center(
-                          child: Text(
-                        'Войти',
-                        style: TextStyle(
-                            color: Colors.white, fontWeight: FontWeight.w600),
-                      )),
-                    ),
-                  ),
+                      onTap: () {
+                        Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                                builder: (context) => const SingUpView()));
+                      },
+                      child: const ContainerUi(text: 'Войти')),
                   const SizedBox(height: 15),
                   const Row(
                     children: [
@@ -132,57 +123,16 @@ class _LoginViewState extends State<LoginView> {
                     ],
                   ),
                   const SizedBox(height: 15),
-                  Container(
-                    width: 396,
-                    height: 56,
-                    decoration: ShapeDecoration(
-                      shape: RoundedRectangleBorder(
-                        side: const BorderSide(color: Color(0xFFE2E2E2)),
-                        borderRadius: BorderRadius.circular(8),
-                      ),
-                    ),
-                    child: const Row(
-                      children: [
-                        SizedBox(width: 15),
-                        Image(image: AssetImage('assets/images/w.png')),
-                        SizedBox(width: 65),
-                        Text(
-                          'Продолжить с Google',
-                          textAlign: TextAlign.center,
-                          style: TextStyle(
-                            color: Color(0xFFDD6F31),
-                            fontSize: 16,
-                            fontWeight: FontWeight.w700,
-                          ),
-                        ),
-                      ],
-                    ),
+                  RegisterWithGoogle(
+                    svgPicture: 'assets/icons/google.svg',
+                    text: '            Продолжить с Google',
+                    onPressed: () {},
                   ),
                   const SizedBox(height: 10),
-                  Container(
-                    width: 396,
-                    height: 56,
-                    decoration: ShapeDecoration(
-                      shape: RoundedRectangleBorder(
-                        side: const BorderSide(color: Color(0xFFE2E2E2)),
-                        borderRadius: BorderRadius.circular(8),
-                      ),
-                    ),
-                    child: const Row(
-                      children: [
-                        SizedBox(width: 15),
-                        Image(image: AssetImage('assets/images/a.png')),
-                        SizedBox(width: 65),
-                        Text(
-                          'Продолжить с Telegram',
-                          style: TextStyle(
-                            color: Color(0xFFDD6F31),
-                            fontSize: 16,
-                            fontWeight: FontWeight.w700,
-                          ),
-                        ),
-                      ],
-                    ),
+                  RegisterWithGoogle(
+                    svgPicture: 'assets/icons/telega.svg',
+                    text: '            Продолжить с Telegram',
+                    onPressed: () {},
                   ),
                 ],
               ),

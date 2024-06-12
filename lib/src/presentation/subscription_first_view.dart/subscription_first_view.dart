@@ -1,17 +1,16 @@
 import 'package:flutter/material.dart';
+import 'package:moon_calendar_app/src/core/ui/widgets/function_subscription.dart';
 import 'package:moon_calendar_app/src/presentation/auth/login_view/login_view.dart';
-import 'package:moon_calendar_app/src/presentation/splash_view/splash_view.dart';
-import 'package:moon_calendar_app/src/utils/colors/colors.dart';
 import 'package:moon_calendar_app/src/utils/media_utils/media_utils.dart';
 
-class SubscriptionView extends StatefulWidget {
-  const SubscriptionView({super.key});
+class SubscriptionFirstView extends StatefulWidget {
+  const SubscriptionFirstView({super.key});
 
   @override
-  State<SubscriptionView> createState() => _SubscriptionViewState();
+  _SubscriptionFirstViewState createState() => _SubscriptionFirstViewState();
 }
 
-class _SubscriptionViewState extends State<SubscriptionView> {
+class _SubscriptionFirstViewState extends State<SubscriptionFirstView> {
   @override
   Widget build(BuildContext context) {
     final height = MediaUtils.height(context);
@@ -24,37 +23,33 @@ class _SubscriptionViewState extends State<SubscriptionView> {
           child: Column(
             children: [
               _buildHeader(context),
-              const SizedBox(height: 38),
+              const SizedBox(height: 20),
               const FunctionSubscription(
-                icons: 'assets/images/moon.png',
-                titles: 'Полный Лунный календарь',
-                subTitles: 'Получайте рекомендации на каждый день',
-              ),
+                  icons: 'assets/images/moon.png',
+                  titles: 'Полный Лунный календарь',
+                  subTitles: 'Получайте рекомендации на каждый день'),
               const SizedBox(
-                height: 28,
+                height: 20,
               ),
               const FunctionSubscription(
-                icons: 'assets/images/calendar.png',
-                titles: 'Лучшее время для 43 дел',
-                subTitles: 'Свидание, стрижка, шоппинг и тд.',
-              ),
+                  icons: 'assets/images/calendar.png',
+                  titles: 'Лучшее время для 43 дел',
+                  subTitles: 'Свидание, стрижка, шоппинг и тд.'),
               const SizedBox(
-                height: 28,
+                height: 20,
               ),
               const FunctionSubscription(
-                icons: 'assets/images/avatarButton.png',
-                titles: 'Индивидуальные расчеты',
-                subTitles: 'Анализ на основе ваших данных рождения',
-              ),
+                  icons: 'assets/images/avatarButton.png',
+                  titles: 'Индивидуальные расчеты',
+                  subTitles: 'Анализ на основе ваших данных рождения'),
               const SizedBox(
-                height: 28.45,
+                height: 20,
               ),
               const FunctionSubscription(
-                icons: 'assets/images/planetSaturn.png',
-                titles: 'Личные астрологические периоды',
-                subTitles: 'Узнайте когда наступит пик продуктивности',
-              ),
-              _buildSubscriptionOptions(),
+                  icons: 'assets/images/planetSaturn.png',
+                  titles: 'Личные астрологические периоды',
+                  subTitles: 'Узнайте когда наступит пик продуктивности'),
+              _buildSubscriptionOptions()
             ],
           ),
         ),
@@ -65,46 +60,44 @@ class _SubscriptionViewState extends State<SubscriptionView> {
   Padding _buildHeader(BuildContext context) {
     return Padding(
       padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 14),
-      child: Row(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          GestureDetector(
-            onTap: () {
-              Navigator.pushReplacement(
-                context,
-                MaterialPageRoute(
-                  builder: (context) => const LoginView(),
+      child: Container(
+        child: Row(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            GestureDetector(
+              onTap: () {
+                Navigator.pushReplacement(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) => const LoginView(),
+                  ),
+                );
+              },
+              child: Container(
+                height: 25,
+                width: 25,
+                decoration: const BoxDecoration(
+                  shape: BoxShape.circle,
+                  color: Color(0xFFDD6F31),
                 ),
-              );
-            },
-            child: Container(
-              height: 35,
-              width: 35,
-              decoration: const BoxDecoration(
-                shape: BoxShape.circle,
-                color: AppColors.orandge,
-              ),
-              child: const Icon(
-                Icons.close,
-                color: Colors.white,
+                child: const Icon(
+                  Icons.close,
+                  size: 15,
+                  color: Colors.white,
+                ),
               ),
             ),
-          ),
-          const SizedBox(width: 20),
-          const Expanded(
-            child: Text(
-              'Откройте все \nфункции Zhanat',
-              textAlign: TextAlign.center,
+            const SizedBox(width: 20),
+            const Text(
+              '           Откройте все \n         функции Zhanat',
               style: TextStyle(
                 color: Color(0xFF595D62),
                 fontSize: 22,
-                fontFamily: 'DM Sans',
                 fontWeight: FontWeight.w700,
-                letterSpacing: 0.24,
               ),
             ),
-          ),
-        ],
+          ],
+        ),
       ),
     );
   }
@@ -113,13 +106,15 @@ class _SubscriptionViewState extends State<SubscriptionView> {
     return ClipPath(
       clipper: TopCurveClipper(),
       child: Container(
+        height: 414,
         color: const Color(0xFFDD6F31),
-        padding: const EdgeInsets.symmetric(vertical: 40),
         child: Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 16),
+          padding: const EdgeInsets.all(15.0),
           child: Column(
             children: [
-              const SizedBox(height: 59),
+              const SizedBox(
+                height: 80,
+              ),
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
@@ -133,16 +128,13 @@ class _SubscriptionViewState extends State<SubscriptionView> {
                   ),
                 ],
               ),
-              const SizedBox(height: 23),
+              const SizedBox(height: 28),
               const Text(
                 'Подписку можно отменить в любой момент',
-                textAlign: TextAlign.center,
                 style: TextStyle(
                   color: Colors.white,
                   fontSize: 12,
-                  fontFamily: 'DM Sans',
                   fontWeight: FontWeight.w400,
-                  letterSpacing: 0.24,
                 ),
               ),
               const SizedBox(height: 25),
@@ -170,9 +162,7 @@ class _SubscriptionViewState extends State<SubscriptionView> {
                       style: TextStyle(
                         color: Colors.white,
                         fontSize: 16,
-                        fontFamily: 'DM Sans',
                         fontWeight: FontWeight.w700,
-                        height: 1.5,
                       ),
                     ),
                   ),
@@ -196,8 +186,8 @@ class _SubscriptionViewState extends State<SubscriptionView> {
 
   Widget _buildSubscriptionOption(String price, String description) {
     return Container(
-      width: 188,
-      height: 135,
+      width: 178,
+      height: 125,
       decoration: ShapeDecoration(
         color: Colors.white.withOpacity(0.44),
         shape: RoundedRectangleBorder(
@@ -213,9 +203,7 @@ class _SubscriptionViewState extends State<SubscriptionView> {
             style: const TextStyle(
               color: Colors.white,
               fontSize: 14,
-              fontFamily: 'DM Sans',
               fontWeight: FontWeight.w700,
-              letterSpacing: 0.24,
             ),
           ),
           Text(
@@ -224,9 +212,7 @@ class _SubscriptionViewState extends State<SubscriptionView> {
             style: const TextStyle(
               color: Colors.white,
               fontSize: 11,
-              fontFamily: 'DM Sans',
               fontWeight: FontWeight.w400,
-              letterSpacing: 0.24,
             ),
           ),
         ],
@@ -244,68 +230,6 @@ class _SubscriptionViewState extends State<SubscriptionView> {
         fontWeight: FontWeight.w400,
         decoration: TextDecoration.underline,
         decorationColor: Colors.white,
-      ),
-    );
-  }
-}
-
-class FunctionSubscription extends StatelessWidget {
-  const FunctionSubscription({
-    super.key,
-    required this.icons,
-    required this.titles,
-    required this.subTitles,
-  });
-  final String icons;
-  final String titles;
-  final String subTitles;
-
-  @override
-  Widget build(BuildContext context) {
-    return Padding(
-      padding: const EdgeInsets.symmetric(horizontal: 16),
-      child: Row(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          Container(
-            width: 60,
-            height: 60,
-            decoration: ShapeDecoration(
-              color: const Color(0x60DD6F31),
-              shape: RoundedRectangleBorder(
-                borderRadius: BorderRadius.circular(20),
-              ),
-            ),
-            child: Image.asset(icons),
-          ),
-          const SizedBox(width: 17),
-          Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              Text(
-                titles,
-                style: const TextStyle(
-                  color: Color(0xFF595D62),
-                  fontSize: 14,
-                  fontFamily: 'DM Sans',
-                  fontWeight: FontWeight.w700,
-                  letterSpacing: 0.24,
-                ),
-              ),
-              const SizedBox(height: 3),
-              Text(
-                subTitles,
-                style: const TextStyle(
-                  color: Color(0xFFBDBDBD),
-                  fontSize: 11,
-                  fontFamily: 'DM Sans',
-                  fontWeight: FontWeight.w400,
-                  letterSpacing: 0.24,
-                ),
-              ),
-            ],
-          ),
-        ],
       ),
     );
   }

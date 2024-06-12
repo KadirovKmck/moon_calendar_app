@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:moon_calendar_app/src/presentation/splash_view/splash_view.dart';
+import 'package:moon_calendar_app/src/presentation/welcom_view/splash_view/splash_view.dart';
 
 void main() {
   runApp(const App());
