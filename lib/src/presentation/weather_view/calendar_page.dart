@@ -2,14 +2,14 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:moon_calendar_app/src/presentation/weather_view/widget/legend_row.dart';
 
-class CalendarPage extends StatefulWidget {
-  const CalendarPage({super.key});
+class ActivetionView extends StatefulWidget {
+  const ActivetionView({super.key});
 
   @override
-  _CalendarPageState createState() => _CalendarPageState();
+  _ActivetionViewState createState() => _ActivetionViewState();
 }
 
-class _CalendarPageState extends State<CalendarPage> {
+class _ActivetionViewState extends State<ActivetionView> {
   bool isCalendar = false;
   final isOpen = List.filled(7, false);
   final name = <String>[
